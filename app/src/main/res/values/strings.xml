@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Oction</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Ana Sayfa</string>
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_exit">Çıkış</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="tab_auction">Auction</string>
+    <string name="tab_credits">Credits</string>
+    <string name="tab_account">Account</string>
+    <string name="tab_current_auctions">CURRENT</string>
+    <string name="tab_upcoming_auctions">UPCOMING</string>
+    <string name="card_current_auction_remaining">Remaining</string>
+    <string name="auction_retail_price">Retail Price %s</string>
+    <string name="auction_start_date">Starts in %s</string>
+    <string name="empty_view">There is no auctionTextDatas right now</string>
+    <string name="reconnect">Reconnect</string>
+    <string name="offline">You are offline</string>
+    <string name="try_again">Try again</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_auction"
+        icon="@drawable/ic_android_black_24dp"
+        title="@string/tab_auction" />
+    <tab
+        id="@+id/tab_credits"
+        icon="@drawable/ic_account_balance_wallet_black_24dp"
+        title="@string/tab_credits" />
+    <tab
+        id="@+id/tab_account"
+        icon="@drawable/ic_person_black_24dp"
+        title="@string/tab_account" />
+</tabs>

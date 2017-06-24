@@ -1,0 +1,141 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
+
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'io.fabric'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+
+
+apply plugin: 'realm-android'
+
+def STRING = 'String'
+def BUILD_TIME = 'BUILD_TIME'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion "${rootProject.ext.buildToolsVersion}"
+
+    defaultConfig {
+        applicationId "com.mega4tech.oction"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField STRING, BUILD_TIME, "\"${rootProject.ext.buildTime}\""
+
+
+        buildConfigField "String", "BASEURL", "\"https://dev-us-02.oction.co\""
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    
+    //supportLib
+    compile rootProject.ext.supportLib
+    compile rootProject.ext.supportLibAppCompat
+    compile rootProject.ext.supportLibDesign
+    compile rootProject.ext.supportLibRecyclerview
+    compile rootProject.ext.supportLibCardview
+
+    //butterknife
+    compile rootProject.ext.butterKnife
+    apt rootProject.ext.butterKnifeAnnotation
+
+    //timber
+    compile rootProject.ext.timber
+
+    //crashlytics
+    compile (rootProject.ext.crashlytics){
+        transitive = true;
+    }
+
+    //di
+
+    compile rootProject.ext.dagger
+    apt rootProject.ext.daggerApt
+    //compile rootProject.ext.daggerSupport
+    //annotationProcessor rootProject.ext.daggerAnnotation
+
+    //rx
+    compile rootProject.ext.rxJava
+    compile rootProject.ext.rxAndroid
+
+    
+    //net
+    compile rootProject.ext.retrofit
+    compile rootProject.ext.okHttp
+    compile rootProject.ext.gson
+    compile rootProject.ext.rxJavaAdapter
+    compile rootProject.ext.gsonConverter
+    compile rootProject.ext.scalarsConverter
+
+    
+
+    
+
+    
+    //picasso
+    compile rootProject.ext.picasso
+
+
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+
+    compile 'com.roughike:bottom-bar:2.3.1'
+    compile 'com.malinskiy:superrecyclerview:1.1.4'
+
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+
+    //test
+    testCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs'
+    })
+
+    testCompile 'org.mockito:mockito-core:2.7.22'
+    androidTestCompile 'org.mockito:mockito-android:2.7.22'
+
+}
